@@ -1,0 +1,130 @@
+h1, h2 {
+    font-family: 'Space Mono', monospace;
+    font-style: italic;
+}
+
+h3 {
+    font-family: 'Space Mono', monospace;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: #8a8a8a;
+}
+
+.site-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+}
+
+.logo {
+    margin-left: 146px;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 50px;
+    margin-right: 80px;
+}
+
+/* Style pour les liens du menu header */
+.menu-header li a {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
+
+.menu-header ul li {
+    margin-left: 20px;
+    size: 16px;
+    font-weight: 400;
+}
+
+.menu-header li a:hover {
+    font-weight: 700;
+}
+
+/* Mise à jour du footer */
+.site-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    max-width: 1440px;
+    height: 40px;
+    background-color: #FFFFFF;
+}
+
+.site-footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 100px;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 100px;
+}
+
+/* Style pour les liens du menu footer */
+.menu-footer li a {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
+
+.menu-footer li a:hover {
+    font-weight: 700;
+}
+
+/* Style pour le texte "Tous droits réservés" */
+.site-footer p {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
+
+.site-footer p:hover {
+    font-weight: 700;
+}
