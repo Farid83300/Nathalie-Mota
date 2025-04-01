@@ -1,0 +1,43 @@
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de configuration contenant des informations sensibles
+wp-config.php
+wp-config-*.php
+.htaccess
+sitemap.xml
+sitemap.xml.gz
+
+# Ignorer les répertoires générés automatiquement par WordPress
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+
+# Ignorer les fichiers de sauvegardes et exports
+*.sql
+*.tar.gz
+*.zip
+*.bak
+*.tmp
+
+# Ignorer les logs et fichiers de débogage
+*.log
+debug.log
+
+# Ignorer Composer (si utilisé)
+composer.lock
+/vendor/
+
+# Ignorer les fichiers de gestion de versions locales
+.env
+.env.local
+.env.production
+.env.*
+
+# Ignorer les fichiers de logs Apache ou Nginx
+logs/
+*.log
+
+# Igonrer la configuration vscode
+.vscode

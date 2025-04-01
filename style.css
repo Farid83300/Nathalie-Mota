@@ -1,0 +1,65 @@
+/*
+Theme Name: motaphoto
+Theme URI: https://github.com/Farid83300/motaphoto
+Author: Farid83300
+Author URI: https://github.com/Farid83300
+Description: Thème personnalisé du site de Nathalie Mota photographe
+Version: 1.0.0
+Tags: Nathalie Mota, photographie, catalogue photo, lightbox
+Text Domain: motaphoto
+*/
+
+/*   Polices du Thème Motaphoto  */
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/fonts/space-mono/SpaceMono-Bold.woff2') format('woff2'),
+        url('assets/fonts/space-mono/SpaceMono-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/fonts/space-mono/SpaceMono-BoldItalic.woff2') format('woff2'),
+        url('assets/fonts/space-mono/SpaceMono-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/fonts/space-mono/SpaceMono-Italic.woff2') format('woff2'),
+        url('assets/fonts/space-mono/SpaceMono-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/fonts/space-mono/SpaceMono-Regular.woff2') format('woff2'),
+        url('assets/fonts/space-mono/SpaceMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+        url('assets/fonts/poppins/Poppins-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/poppins/Poppins-Light.woff2') format('woff2'),
+        url('assets/fonts/poppins/Poppins-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
