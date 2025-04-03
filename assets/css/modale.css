@@ -9,10 +9,14 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.65);
     transition: background-color 0.3s ease;
+    display: none;
 }
 
 .modal-content {
     position: relative;
+    width: 597px;
+    height: 769px;
+    border-width: 5px;
     background-color: #fff;
     margin: 150px auto auto;
     padding: 0;
@@ -116,12 +120,11 @@ textarea.form-control {
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.02);
     border-radius: 2px;
     
-    font-family: 'Space Mono', monospace;
+    font-family: 'Space Mono';
     font-weight: 400;
     line-height: 100%;
     letter-spacing: 0%;
     font-size: 12px;
-    text-transform: uppercase;
     color: #000;
     cursor: pointer;
     border: none;
@@ -130,4 +133,75 @@ textarea.form-control {
 .btn-submit:hover {
     background-color: #000;
     color: #fff;
+}
+
+/* Force le centrage du formulaire quelle que soit son état */
+.wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Assure que le conteneur de formulaire reste toujours centré */
+.contact-form-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 263px !important;
+    gap: 12px;
+}
+
+/* Maintient la largeur des groupes de champs */
+.form-inputs {
+    width: 100%;
+}
+
+/* Assure que la hauteur des groupes de formulaire reste fixe */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0;
+    min-height: 65px; /* Hauteur fixe pour chaque groupe incluant message d'erreur */
+    position: relative;
+}
+
+/* Place les messages d'erreur de manière absolue pour ne pas décaler les autres éléments */
+.wpcf7-not-valid-tip {
+    position: absolute;
+    left: 0;
+}
+
+.form-submit {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: -30px !important;
+    position: relative !important;
+    z-index: 1 !important; /* Assure que le bouton reste au-dessus des messages d'erreur */
+}
+
+/* Message de réponse centré - masqué pour les erreurs */
+.wpcf7-response-output {
+    text-align: center !important;
+    max-width: 263px !important;
+}
+
+/* Masquer complètement le message d'erreur général */
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output {
+    display: none !important;
+}
+
+/* Réduire la taille des messages d'erreur sous les champs */
+.wpcf7-not-valid-tip {
+    font-size: 10px !important;
+    color: #dc3232 !important;
+    /* Les marges sont désormais gérées par le positionnement absolu */
+}
+
+#message + .wpcf7-not-valid-tip {
+    bottom: -10px !important; /* Remonté de 2px par rapport à la valeur par défaut (-3px) */
 }

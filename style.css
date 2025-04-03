@@ -9,7 +9,9 @@ Tags: Nathalie Mota, photographie, catalogue photo, lightbox
 Text Domain: motaphoto
 */
 
-/*   Polices du Thème motaphoto  */
+
+
+/*   Import Polices du Thème motaphoto  */
 @font-face {
     font-family: 'Space Mono';
     src: url('/wp-content/themes/motaphoto/assets/fonts/space-mono/SpaceMono-Bold.woff2') format('woff2'),
