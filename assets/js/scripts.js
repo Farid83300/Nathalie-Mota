@@ -1,4 +1,6 @@
 
+
+//////// -------- JS de la Modale --------- ////////
 document.addEventListener('DOMContentLoaded', function() {
     // Sélectionne le lien "Contact" dans le menu principal
     const contactLinks = document.querySelectorAll('.menu-header a[href*="contact"], a[href="#contact"]');

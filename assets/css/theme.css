@@ -13,7 +13,6 @@ p {
 
 html, body {
     max-width: 1440px;
-    height: 100%;
     margin: 0;
     padding: 0;
     margin-left: auto;
@@ -84,7 +83,6 @@ header, footer {
     list-style-type: none;
     max-width: 1440px;
     height: 40px;
-    margin-top: 700px; /*  ATTENTION - A modifier a la fin de la front page */
     background-color: #FFFFFF;
 }
 
@@ -107,7 +105,7 @@ header, footer {
     gap: 100px;
 }
 
-/* Style pour les liens du menu footer */
+/********** Style pour les liens du menu footer ***********/
 .menu-footer li a {
     font-family: 'Space Mono', monospace;
     font-weight: 400;
