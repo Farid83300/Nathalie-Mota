@@ -17,8 +17,6 @@ html, body {
     padding: 0;
     margin-left: auto;
     margin-right: auto;
-    overflow: hidden;
-    background-color: #8a8a8a; /*  ATTENTION - A modifier a la fin de la front page */
 }
 
 main {
@@ -84,6 +82,7 @@ header, footer {
     max-width: 1440px;
     height: 40px;
     background-color: #FFFFFF;
+    border-top: 1px solid black;
 }
 
 .site-footer div {
