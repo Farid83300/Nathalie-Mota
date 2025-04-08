@@ -66,4 +66,3 @@ function enqueue_photo_navigation_script() {
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_photo_navigation_script');
-

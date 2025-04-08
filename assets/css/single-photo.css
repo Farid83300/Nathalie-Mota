@@ -5,29 +5,31 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-  }
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100px);
+    background-color: #FFFFFF;
+}
   
-  .photo-content {
+.photo-content {
     display: flex;
     flex-direction: row-reverse; /* déplace le bloc image a droite */
     min-width: 1148px;
     margin-right: 160px;
     margin-top: 38px;
-  }
+}
   
-  .bloc-photo img {  /*taille selon maquette */
+.bloc-photo img {  /*taille selon maquette */
     width: 563px;
     height: 844px;
     object-fit: cover;
-  }
+}
   
-  .txt-infos {
+.txt-infos {
     margin: 0;
-  }
+}
   
-  /*---bloc des références---*/
+/********* Bloc des Références *********/
   
-  h2 {
+h2 {
     font-family: "Space Mono";
     font-weight: 400;
     font-style: italic;
@@ -38,9 +40,9 @@
     text-transform: uppercase;
     margin: 0 !important;
     
-  }
+}
   
-  .infos-bloc {
+.infos-bloc {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -53,9 +55,9 @@
     text-align: left;
     border-bottom: 1px solid #000;
     padding-bottom: 25px;
-  }
+}
   
-  .txt-infos {
+.txt-infos {
     display: flex;
     flex-direction: column;
     width: 550px;
@@ -64,16 +66,16 @@
     text-transform: uppercase;
     font-size: 0.875em;
     margin: 0;
-  }
+}
 
-  .title-infos {
+.title-infos {
     width: 250px;
     padding: 0%;
-  }
+}
   
-  /* ---Bloc contact content--- */
+/********* Bloc contact content *********/
   
-  .contact-content {
+.contact-content {
     display: flex;
     align-content: center;
     justify-content: space-between;
@@ -81,14 +83,14 @@
     height: 120px;
     margin: auto;
     border-bottom: 1px solid black;
-  }
+}
   
-  .contact-ref {
+.contact-ref {
     display: flex;
     align-items: center;
-  }
+}
   
-  .interesse {
+.interesse {
     margin-right: 60px;
     font-family: "Poppins";
     font-weight: 300;
@@ -97,9 +99,9 @@
     letter-spacing: 0%;
     vertical-align: middle;
 
-  }
+}
   
-  #ref-btn {
+#ref-btn {
     width: 272px;
     height: 50px;
     border-radius: 2px;
@@ -109,45 +111,88 @@
     font-family: 'Space Mono', sans-serif;
     font-size: 0.75em;
     color: #000;
-  }
+}
   
-  #ref-btn:hover {
+#ref-btn:hover {
     background: #484545;
     color: #fff;
-  }
+}
   
-  /* Conteneur global pour la miniature et les flèches */
-  .navigationPhoto {
+/* Conteneur global pour la miniature et les flèches */
+.navigationPhoto {
     display: flex;
     flex-direction: column;
     width: 50%;
     margin-right: 15px;
     margin-top: 5px;
     align-items: flex-end;
-  }
+}
   
-  /* Miniature qui s'affiche toujours visible */
-  #miniaturePhoto {
+/* Miniature qui s'affiche toujours visible */
+#miniaturePhoto {
     width: 81px;
     height: 71px; /* Ajustez la taille de la miniature */
     background-color: #ddd;
     background-size: cover;
     background-position: center;
     cursor: pointer; /* Pour indiquer que c'est cliquable */
-  }
+}
   
-  /* Flèches gauche et droite */
-  .arrowNav {
+/* Flèches gauche et droite */
+.arrowNav {
     margin-right: 5px;
     display: flex;
     gap: 10px;
     width: 80px;
-  }
+}
   
-  .arrow {
+.arrow {
     cursor: pointer;
     width: 40px;
     height: 40px;
     object-fit: contain;
-  }
+}
   
+/********* photo apparentés *********/
+.related-photos h3 {
+    font-family: 'Space Mono';
+    font-size: 1.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+  
+.related-photos {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+    padding-top: 30px;
+}
+  
+.related-photos-list {
+    display: flex;
+    gap: 20px;
+}
+  
+.related-photo-item img {
+    width: 564px;
+    height: 495px;
+    object-fit: cover;
+}
+  
+/* Appliquer l'effet de survol sur les photos apparentées */
+.related-photo-item {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+  
+.related-photo-item:hover .photo-overlay {
+    display: flex;
+    pointer-events: auto;
+    opacity: 1; /* Assure que l'overlay est visible */
+}

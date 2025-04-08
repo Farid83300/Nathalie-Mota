@@ -19,23 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             modal.style.display = 'block';
             
+            // Récupérer la référence depuis l'attribut data-ref du bouton
+            const photoRef = this.getAttribute('data-ref');
+            
             setTimeout(function() {
                 const refPhotoField = document.getElementById('ref-photo');
                 
-                if (refPhotoField) {
-                    // Supposons que la référence est dans un élément spécifique
-                    // Si vous avez un élément HTML qui contient uniquement le code de référence, utilisez-le directement
-                    const refElement = document.querySelector('.reference');
-                    
-                    if (refElement) {
-                        // Extraire uniquement la valeur de référence sans le texte "RÉFÉRENCE:"
-                        const fullText = refElement.textContent;
-                        const referenceValue = fullText.includes(':') ? 
-                            fullText.split(':')[1].trim() : 
-                            fullText.trim();
-                            
-                        refPhotoField.value = referenceValue;
-                    }
+                if (refPhotoField && photoRef) {
+                    refPhotoField.value = photoRef;
                 }
             }, 300);
         });
