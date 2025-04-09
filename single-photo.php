@@ -99,15 +99,15 @@
         <h3>Vous aimerez aussi</h3>
         <div class="related-photos-list">
             <?php
-            // Récupérer les ID des catégories de la photo
+            // Récupérer la première catégorie de la photo
             $category_ids = wp_list_pluck($categories, 'term_id');
             
-            // Ajouter un argument pour récupérer uniquement les photos de la même catégorie, de façon aléatoire et exclure la photo actuelle
+            
+            // Ajouter un argument pour récupérer uniquement les photos de la même catégorie et exclure la photo actuelle
             $args = array(
                 'post_type' => 'photo',
                 'posts_per_page' => 2, // Limiter à 2 photos seulement
                 'post__not_in' => array(get_the_ID()), // Exclure la photo actuelle
-                'orderby' => 'rand', // Tri aléatoire des photos
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'categorie',
@@ -118,29 +118,9 @@
                 ),
             );
             
-            // Exécuter la requête pour obtenir les photos apparentées
-            $related_photos = new WP_Query($args);
-            
-            // Vérifier si des photos apparentées ont été trouvées
-            if ($related_photos->have_posts()) :
-                while ($related_photos->have_posts()) : $related_photos->the_post();
-                    // Structure simplifiée pour chaque photo apparentée
-                    ?>
-                    <div class="related-photo-item">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('full'); ?>
-                            <div class="photo-overlay">
-                                <!-- Vous pouvez ajouter ici les éléments de votre overlay si nécessaire -->
-                            </div>
-                        </a>
-                    </div>
-                <?php
-                endwhile;
-                // Réinitialiser les données de post
-                wp_reset_postdata();
-            else :
-                echo '<p>Aucune photo apparentée trouvée.</p>';
-            endif;
+            // Appeler la fonction pour afficher les photos apparentées en passant les arguments
+            afficher_photos_catalogue($args); // load pour effet survol et appliquer a tous 
+
             ?>
         </div>
     </div>

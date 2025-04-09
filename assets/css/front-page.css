@@ -106,6 +106,7 @@ header, footer {
     gap: 100px;
 }
 
+
 /********** Style pour les liens du menu footer ***********/
 .menu-footer li a {
     font-family: 'Space Mono', monospace;
@@ -122,6 +123,7 @@ header, footer {
 .menu-footer li a:hover {
     font-weight: 700;
 }
+
 
 /* Style pour le texte "Tous droits réservés" */
 .site-footer p {
@@ -140,6 +142,7 @@ header, footer {
     font-weight: 700;
 }
 
+
 /********** Style Hero ***********/
 .hero {
     width: 100%;
@@ -149,28 +152,81 @@ header, footer {
     justify-content: center;
     position: relative;
     margin-bottom: 79px;
-  }
-  .hero img {
+}
+
+.hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
-  }
+}
   
-  h1 {
+h1 {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     color: transparent;
     -webkit-text-stroke: 3px #ffffff;
-    z-index: 1;
-  }
-  
-  h1 {
+    z-index: 1;    
     font-family: 'Space Mono', sans-serif;
     font-size: 6em;
     font-style: italic;
     font-weight: 700;
     text-transform: uppercase;
+}
+  
+
+/********** PHOTO CATALOGUE / BOUTON CHARGER ***********/
+#catalogueContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  #btnLoad-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 272px;
+    height: 50px;
+    border: transparent;
+    border-radius: 2px;
+    background: #D8D8D8;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    font-family: 'Space Mono', sans-serif;
+    font-size: 0.75em;
+    color: #000;
+    margin: 0 auto 30px auto;
+  }
+  
+  #btnLoad-more:hover {
+    background: #292727;  
+    color: white;         
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;      
+    transform: scale(1.05); 
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .photo-display {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .photo-item {
+    position: relative;
+    width: 100%;  
+    height: 50vh; 
+    overflow: hidden;
+  }
+  
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
   }

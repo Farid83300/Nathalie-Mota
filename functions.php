@@ -66,3 +66,33 @@ function enqueue_photo_navigation_script() {
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_photo_navigation_script');
+
+
+///////////// Fonction pour afficher les photos dans la galerie (front-page.php) /////////////
+
+function afficher_photos_catalogue($args = array()) {
+    // Définir les arguments de la requête
+    $default_args = array(
+        'post_type' => 'photo',         // CPT 'photo'
+        'posts_per_page' => 8,          // Nombre de photos par page
+    );
+    $args = array_merge($default_args, $args);  // Fusionner les arguments si des filtres sont passés
+
+    // La requête WP_Query pour récupérer les photos
+    $photo_query = new WP_Query($args);
+
+    if ($photo_query->have_posts()) :
+        echo '<div class="photo-display">';  // Utiliser 'photo-display' ici pour la cohérence
+        while ($photo_query->have_posts()) : $photo_query->the_post();
+
+            // Inclure le fichier load.php pour afficher chaque photo
+            include(get_template_directory() . '/template-parts/load.php'); 
+
+        endwhile;
+        echo '</div>';
+    else :
+        echo '<p>Aucune photo trouvée.</p>';
+    endif;
+
+    wp_reset_postdata();  // Réinitialiser les données de la requête
+}
