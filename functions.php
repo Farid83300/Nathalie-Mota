@@ -3,7 +3,7 @@
 ///////////// Enregistrement du CSS /////////////
 function charger_styles_theme() {
     wp_enqueue_style('style-principal', get_stylesheet_uri(), array(), '1.0');
-    wp_enqueue_style('style-theme', get_template_directory_uri() . '/assets/css/theme.css', array(), '1.0');
+    wp_enqueue_style('style-theme', get_template_directory_uri() . '/assets/css/front-page.css', array(), '1.0');
     wp_enqueue_style('style-modale', get_template_directory_uri() . '/assets/css/modale.css', array(), '1.0');
     wp_enqueue_style('style-single-photo', get_template_directory_uri() . '/assets/css/single-photo.css', array(), '1.0');
 }

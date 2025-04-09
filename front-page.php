@@ -6,34 +6,9 @@
  */
 ?>
 
-<?php get_header(); ?>
+<?php get_header(); ?>  <!-- Appel du Header -->
 
-<main id="primary" class="site-main">
-
-    <?php if ( have_posts() ) : ?>
-        
-        <!-- Section Hero -->
-        <section class="hero">
-            <div class="container">
-                <h1><?php echo get_bloginfo('name'); ?></h1>
-                <p><?php echo get_bloginfo('description'); ?></p>
-                <a href="#contact" class="btn">Contactez-nous</a>
-            </div>
-        </section>
+<?php get_template_part('/template-parts/hero'); ?>    <!-- Appel du Hero -->
 
 
-
-    <?php else : ?>
-        
-        <section class="no-content">
-            <div class="container">
-                <h1>Aucun contenu trouvé</h1>
-                <p>Il semble qu'il n'y ait pas de contenu à afficher pour le moment.</p>
-            </div>
-        </section>
-
-    <?php endif; ?>
-
-</main>
-
-<?php get_footer(); ?>
+<?php get_footer(); ?>  <!-- Appel du Footer -->

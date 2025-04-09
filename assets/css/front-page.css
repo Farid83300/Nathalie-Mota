@@ -17,6 +17,8 @@ html, body {
     padding: 0;
     margin-left: auto;
     margin-right: auto;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 main {
@@ -137,3 +139,38 @@ header, footer {
 .site-footer p:hover {
     font-weight: 700;
 }
+
+/********** Style Hero ***********/
+.hero {
+    width: 100%;
+    height: 962px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 79px;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+  
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: transparent;
+    -webkit-text-stroke: 3px #ffffff;
+    z-index: 1;
+  }
+  
+  h1 {
+    font-family: 'Space Mono', sans-serif;
+    font-size: 6em;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
