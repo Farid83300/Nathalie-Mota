@@ -12,8 +12,7 @@
 .photo-content {
     display: flex;
     flex-direction: row-reverse; /* déplace le bloc image a droite */
-    min-width: 1148px;
-    margin-right: 160px;
+    margin-right: 150px;
     margin-top: 38px;
 }
   
@@ -29,7 +28,7 @@
   
 /********* Bloc des Informations Photo unique *********/
   
-h2 {
+.infos-bloc h2 {
     font-family: "Space Mono";
     font-weight: 400;
     font-style: italic;
@@ -62,9 +61,12 @@ h2 {
     flex-direction: column;
     width: 550px;
     text-align: left;
-    font-family: 'Space Mono', sans-serif;
+    font-family: 'Space Mono';
+    font-weight: 400;
+    letter-spacing: 10%;
     text-transform: uppercase;
-    font-size: 0.875em;
+    vertical-align: middle;
+    font-size: 14px;
     margin: 0;
 }
 
@@ -73,7 +75,7 @@ h2 {
     padding: 0%;
 }
   
-/********* Bloc contact content *********/
+/********* Bloc Contact content single.page *********/
   
 .contact-content {
     display: flex;
@@ -88,6 +90,7 @@ h2 {
 .contact-ref {
     display: flex;
     align-items: center;
+    margin-left: 5px;
 }
   
 .interesse {
@@ -104,6 +107,7 @@ h2 {
 #ref-btn {
     width: 272px;
     height: 50px;
+    margin-left: 20px;
     border-radius: 2px;
     background: #D8D8D8;
     box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
@@ -125,7 +129,7 @@ h2 {
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin-right: 15px;
+    margin-right: 7px;
     margin-top: 5px;
     align-items: flex-end;
 }
@@ -139,6 +143,8 @@ h2 {
     background-position: center;
     cursor: pointer; /* Pour indiquer que c'est cliquable */
 }
+
+
   
 /* Flèches gauche et droite */
 .arrowNav {
@@ -161,17 +167,20 @@ h2 {
     font-size: 1.15em;
     font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: 50px;
-    margin-top: 50px;
 }
-  
+
+.photo-display {
+    padding: 0;
+    margin-top: 40px;
+}  
+
 .related-photos {
     width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 100px;
-    padding-top: 30px;
+    padding-top: 50px;
 }
   
 .related-photos-list {
@@ -199,7 +208,7 @@ h2 {
     opacity: 1; /* Assure que l'overlay est visible */
 }
 
-/********* css pour le survol des photos *********/
+/********* css pour le OVERLAY des photos *********/
 
 .eye {
     width: 46px;
@@ -208,39 +217,39 @@ h2 {
     top: 45%;
     left: 47.5%;
     cursor: pointer;
-  }
+}
   
-  .photo-overlay h2, .photo-overlay h3 {
+.photo-overlay h2, .photo-overlay h3 {
     position: absolute;
     color: #fff;
     font-family: 'poppons', sans-serif;
     text-transform: uppercase;
     font-size: 0.87em;
     font-weight: 500;
-  }
+}
   
-  .photo-overlay h2 {
+.photo-overlay h2 {
     left: 17px;
     bottom: 12px;
     font-style: normal;
-  }
+}
   
-  .photo-overlay h3 {
+.photo-overlay h3 {
     right: 23px;
     bottom: 12px;
-  }
+}
   
-  .full-screen {
+.full-screen {
     position: absolute;
     cursor: pointer;
     width: 34px;
     height: 34px;
     top: 5%;
     right: 5%;
-  }
+}
   
-  /* L'overlay qui apparaît au survol */
-  .photo-overlay {
+/* L'overlay qui apparaît au survol */
+.photo-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -249,11 +258,11 @@ h2 {
     background-color: rgba(0, 0, 0, 0.6); /* Fond noir transparent */
     transition: opacity 0.3s ease;
     display: none;
-  }
+}
   
-  /* Lors du survol de la photo, on affiche l'overlay */
-  .photo-item:hover .photo-overlay {
+/* Lors du survol de la photo, on affiche l'overlay */
+.photo-item:hover .photo-overlay {
     display: flex;
     pointer-events: auto; /* Permet d'interagir avec l'overlay pendant le survol */
     opacity: 1; /* Assure que l'overlay est visible */
-  }
+}

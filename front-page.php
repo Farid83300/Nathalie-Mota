@@ -16,8 +16,7 @@
     <div id="photo-display"> <!-- id pour afficher charger plus -->
         <?php afficher_photos_catalogue(); // Affiche les photos par défaut ?>
     </div>
-    <!-- Bouton Charger Plus -->
-    <button id="btnLoad-more">Charger Plus</button>
+    <button id="btnLoad-more">Charger Plus</button><!-- Bouton Charger Plus -->
 </section>
 
 

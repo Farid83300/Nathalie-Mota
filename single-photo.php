@@ -101,9 +101,7 @@
             <?php
             // Récupérer la première catégorie de la photo
             $category_ids = wp_list_pluck($categories, 'term_id');
-            
-            
-            // Ajouter un argument pour récupérer uniquement les photos de la même catégorie et exclure la photo actuelle
+            // Argument pour récupérer uniquement les photos de la même catégorie et exclure la photo actuelle
             $args = array(
                 'post_type' => 'photo',
                 'posts_per_page' => 2, // Limiter à 2 photos seulement
