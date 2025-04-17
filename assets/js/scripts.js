@@ -1,3 +1,4 @@
+///////////////////////////////////////////
 ///////////// JS de la Modale /////////////
 document.addEventListener('DOMContentLoaded', function() {
     // Sélecteurs pour les éléments de contact et la modale
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+///////////////////////////////////////////////////////////////
 ///////////// jQuery de la Miniature SINGLE-PHOTO /////////////
 jQuery(document).ready(function ($) {
     let currentIndex = 0; 

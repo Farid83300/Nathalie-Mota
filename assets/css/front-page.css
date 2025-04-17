@@ -29,6 +29,7 @@ html, body {
     margin-right: auto;
 }
 
+/********** Header et Footer **********/ 
 .site-header {
     display: flex;
     flex-direction: row;
@@ -176,7 +177,7 @@ html, body {
     text-transform: uppercase;
 }
   
-/********** PHOTO CATALOGUE / BOUTON CHARGER ***********/
+/********** Photo Catalogue / Bouton Charger ***********/
 #catalogueContainer {
     width: 80%;
     margin: 0 auto;
@@ -209,7 +210,7 @@ html, body {
   
 .photo-display {
     display: grid; 
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
     width: 100%;

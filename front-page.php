@@ -6,18 +6,19 @@
  */
 ?>
 
-<?php get_header(); ?>  <!-- Appel du Header -->
+<?php get_header(); ?>
 
-<?php get_template_part('/template-parts/hero'); ?>    <!-- Appel du Hero -->
+<!-- Appel du Hero -->
+<?php get_template_part('/template-parts/hero'); ?>    
 
 
-
+<!-- Contenu de la page d'acceuil -->
 <section id="catalogueContainer"> 
-    <div id="photo-display"> <!-- id pour afficher charger plus -->
-        <?php afficher_photos_catalogue(); // Affiche les photos par défaut ?>
+    <div id="photo-display"> 
+        <?php afficher_photos_catalogue(); ?> 
     </div>
-    <button id="btnLoad-more">Charger Plus</button><!-- Bouton Charger Plus -->
+    <button id="btnLoad-more">Charger Plus</button>
 </section>
 
 
-<?php get_footer(); ?>  <!-- Appel du Footer -->
+<?php get_footer(); ?>

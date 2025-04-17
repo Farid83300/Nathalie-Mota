@@ -1,52 +1,54 @@
-// Script de chargement AJAX pour le bouton "Charger Plus"
-jQuery(document).ready(function($) {
+///////////// Script AJAX de chargement pour le bouton "Charger Plus" /////////////
+document.addEventListener('DOMContentLoaded', function() {
     // Variables pour suivre la pagination
     let currentPage = 1;
     let isLoading = false;
-    // Sélectionner le bouton "Charger Plus"
-    const loadMoreBtn = $('#btnLoad-more');
-    const photoContainer = $('#photo-display .photo-display');
-    
-    // Vérifier si le conteneur existe
-    if (photoContainer.length === 0) {
-        console.error("Erreur: Le conteneur .photo-display n'a pas été trouvé");
-        return;
-    }
-    
-    // Gérer le clic sur le bouton "Charger Plus"
-    loadMoreBtn.on('click', function() {
-        // Éviter les requêtes multiples si une est déjà en cours
-        if (isLoading) return;
-        
-        isLoading = true;
-        currentPage++;
-        
-        // Changer le texte du bouton pendant le chargement
-        loadMoreBtn.text('Chargement...');
-        
-        // Requête AJAX pour récupérer plus de photos
-        $.ajax({
-            url: motaphoto_ajax.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'load_more_photos',
-                nonce: motaphoto_ajax.nonce,
-                page: currentPage
-            },
-            success: function(response) {
-                // Ajouter les nouvelles photos directement au conteneur existant
-                photoContainer.append(response);
+    const loadMoreBtn = document.getElementById('btnLoad-more');
+    const photoContainer = document.querySelector('#photo-display .photo-display');
+
+    // Gére le clic sur le bouton "Charger Plus"
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            // Évite les requêtes multiples si une est déjà en cours
+            if (isLoading) return;
+            isLoading = true;
+
+            // Incrémentation de la page
+            currentPage++;
+
+            // Change le texte du bouton pendant le chargement
+            loadMoreBtn.textContent = 'Chargement...';
+
+            // Création de l'objet FormData pour les données de la requête
+            const formData = new FormData();
+            formData.append('action', 'load_more_photos');
+            formData.append('nonce', motaphoto_ajax.nonce);
+            formData.append('page', currentPage);
+
+            // Requête fetch pour remplacer $.ajax
+            fetch(motaphoto_ajax.ajax_url, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Ajoute les nouvelles photos directement au conteneur existant
+                photoContainer.insertAdjacentHTML('beforeend', data);
                 
-                // Réinitialiser le texte du bouton
-                loadMoreBtn.text('Charger Plus');
-                
+                // Réinitialise le texte du bouton
+                loadMoreBtn.textContent = 'Charger Plus';
                 isLoading = false;
-            },
-            error: function(xhr, status, error) {
+            })
+            .catch(error => {
                 console.error('Erreur AJAX:', error);
-                loadMoreBtn.text('Charger Plus');
+                loadMoreBtn.textContent = 'Charger Plus';
                 isLoading = false;
-            }
+            });
         });
-    });
+    }
 });

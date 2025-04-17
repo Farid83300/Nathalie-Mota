@@ -15,13 +15,13 @@ add_action('wp_enqueue_scripts', 'charger_styles_theme');
 ////////////////////////////////////////////////////////
 ///////////// Enregistrement du JavaScript /////////////
 function enqueue_custom_scripts() {
-    // Enregistrer le script principal
+    // Enregistre le script principal
     wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true);
     
-    // Enregistrer le script load-more.js
+    // Enregistre le script load-more.js
     wp_enqueue_script('load-more', get_template_directory_uri() . '/assets/js/load-more.js', array('jquery'), '1.0.0', true);
     
-    // Localiser le script load-more.js avec les données nécessaires
+    // Localise le script load-more.js avec les données nécessaires
     wp_localize_script('load-more', 'motaphoto_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('motaphoto_load_more_nonce')
@@ -49,11 +49,11 @@ function enqueue_photo_navigation_script() {
     // Enqueue votre script
     wp_enqueue_script('miniature-script', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true);
 
-    // Localiser les variables PHP et les passer à JavaScript
+    // Localise les variables PHP et les passer à JavaScript
     $all_thumbnails = [];
     $all_photo_ids = [];
 
-    // Récupérer toutes les photos
+    // Récupére toutes les photos
     $all_photos_query = new WP_Query(array(
         'post_type' => 'photo',
         'posts_per_page' => -1,  // Charger toutes les photos
@@ -61,7 +61,7 @@ function enqueue_photo_navigation_script() {
         'order' => 'ASC'
     ));
 
-    // Stocker les informations dans les tableaux
+    // Stocke les informations dans les tableaux
     if ($all_photos_query->have_posts()) :
         while ($all_photos_query->have_posts()) : $all_photos_query->the_post();
             $all_thumbnails[] = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
@@ -71,7 +71,7 @@ function enqueue_photo_navigation_script() {
 
     wp_reset_postdata();
 
-    // Localiser les variables et les transmettre au script JS
+    // Localise les variables et les transmettre au script JS
     wp_localize_script('miniature-script', 'photoData', array(
         'thumbnails' => $all_thumbnails,
         'photo_ids' => $all_photo_ids
@@ -91,9 +91,9 @@ function afficher_photos_catalogue($args = array()) {
         'post_type' => 'photo',   // CPT 'photo'
         'posts_per_page' => 8,   // Nombre de photos par page
     );
-    $args = array_merge($default_args, $args);  // Fusionner les arguments si des filtres sont passés
+    $args = array_merge($default_args, $args);  // Fusionne les arguments si des filtres sont passés
 
-    // La requête WP_Query pour récupérer les photos
+    // Requête WP_Query pour récupérer les photos
     $photo_query = new WP_Query($args);
     if ($photo_query->have_posts()) :
         echo '<div class="photo-display">';  // Utiliser 'photo-display' ici pour la cohérence
@@ -107,7 +107,7 @@ function afficher_photos_catalogue($args = array()) {
         echo '<p>Aucune photo apparentée trouvée !</p>';
     endif;
 
-    wp_reset_postdata();  // Réinitialiser les données de la requête
+    wp_reset_postdata();  // Réinitialise les données de la requête
 }
 
 
@@ -118,51 +118,28 @@ function afficher_photos_catalogue($args = array()) {
 function load_more_photos_ajax() {
     // Vérifie le nonce pour la sécurité
     check_ajax_referer('motaphoto_load_more_nonce', 'nonce', false);
-    
-    // Récupérer le numéro de page depuis la requête
+    // Récupére le numéro de page depuis la requête
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    
     // Arguments de base pour la requête
     $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $page,
     );
-    
-    // Ajouter des filtres supplémentaires si présents dans la requête
-    if (isset($_POST['category']) && !empty($_POST['category'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categorie',
-            'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['category'])
-        );
-    }
-    
-    if (isset($_POST['format']) && !empty($_POST['format'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'format',
-            'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['format'])
-        );
-    }
-    
-    // Exécuter la requête WP_Query
+    // Exécute la requête WP_Query
     $photo_query = new WP_Query($args);
     // Boucle pour afficher les photos
     if ($photo_query->have_posts()) {
         while ($photo_query->have_posts()) {
             $photo_query->the_post();
-            // Inclure le template qui génère chaque élément .photo-item
+            // Inclue le template qui génère chaque élément .photo-item
             include(get_template_directory() . '/template-parts/load.php');
         }
     }
-    
     wp_reset_postdata();
-    
     // Terminer le processus AJAX
     wp_die();
 }
-
-// Enregistrer les actions AJAX pour les utilisateurs connectés et non connectés
+// Enregistre les actions AJAX pour les utilisateurs connectés et non connectés
 add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax');
