@@ -1,3 +1,4 @@
+
 ///////////// Script AJAX de chargement pour le bouton "Charger Plus" /////////////
 document.addEventListener('DOMContentLoaded', function() {
     // Variables pour suivre la pagination
@@ -25,17 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('nonce', motaphoto_ajax.nonce);
             formData.append('page', currentPage);
 
-            // Requête fetch pour remplacer $.ajax
+            // Exécution de la requête AJAX avec Fetch API
             fetch(motaphoto_ajax.ajax_url, {
                 method: 'POST',
                 body: formData
             })
+            // Gestion de la réponse
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erreur réseau: ' + response.status);
                 }
                 return response.text();
             })
+            // Traitement des données reçues
             .then(data => {
                 // Ajoute les nouvelles photos directement au conteneur existant
                 photoContainer.insertAdjacentHTML('beforeend', data);
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadMoreBtn.textContent = 'Charger Plus';
                 isLoading = false;
             })
+            // Gestion des erreurs
             .catch(error => {
                 console.error('Erreur AJAX:', error);
                 loadMoreBtn.textContent = 'Charger Plus';

@@ -11,8 +11,11 @@
 <!-- Appel du Hero -->
 <?php get_template_part('/template-parts/hero'); ?>    
 
+<section class="filtres_container">
+    <?php get_template_part('template-parts/filtres'); ?>   <!-- template des filtres -->
+</section>
 
-<!-- Contenu de la page d'acceuil -->
+<!-- Catalogue Photos -->
 <section id="catalogueContainer"> 
     <div id="photo-display"> 
         <?php afficher_photos_catalogue(); ?> 

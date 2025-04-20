@@ -143,3 +143,99 @@ function load_more_photos_ajax() {
 // Enregistre les actions AJAX pour les utilisateurs connectés et non connectés
 add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax');
+
+
+
+/////////////////////////////////////////////////////////
+///////////// Fonction AJAX pour le filtrage ////////////
+function filtrer_photos_ajax() {
+    // Vérifie le nonce pour la sécurité
+    check_ajax_referer('ajax_filter_nonce', 'nonce');
+    
+    // Récupération des filtres
+    $filters = isset($_POST['filters']) ? $_POST['filters'] : array();
+    $photo_ids = isset($_POST['photoArray']) ? $_POST['photoArray'] : array();
+    
+    // Arguments de base pour la requête
+    $args = array(
+        'post_type' => 'photo',
+        'posts_per_page' => 8,
+    );
+    
+    // Exclut les photos déjà affichées si nécessaire
+    if (!empty($photo_ids)) {
+        $args['post__not_in'] = $photo_ids;
+    }
+    
+    // Ajout des taxonomies au tableau tax_query si des filtres sont appliqués
+    if (!empty($filters)) {
+        $tax_query = array('relation' => 'AND');
+        
+        foreach ($filters as $taxonomy => $term) {
+            // Gestion du tri spécial
+            if ($taxonomy === 'sort') {
+                $args['orderby'] = 'date';
+                $args['order'] = $term; // ASC ou DESC
+                continue;
+            }
+            
+            // N'ajoute que les taxonomies valides
+            if ($taxonomy === 'categorie' || $taxonomy === 'format') {
+                $tax_query[] = array(
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => $term,
+                );
+            }
+        }
+        
+        // N'ajoute tax_query que s'il y a des critères taxonomiques
+        if (count($tax_query) > 1) { // > 1 car nous avons déjà ajouté 'relation' => 'AND'
+            $args['tax_query'] = $tax_query;
+        }
+    }
+    
+    // Exécute la requête WP_Query
+    $photo_query = new WP_Query($args);
+    
+    // Boucle pour afficher les photos filtrées
+    if ($photo_query->have_posts()) {
+        while ($photo_query->have_posts()) {
+            $photo_query->the_post();
+            // Inclut le template qui génère chaque élément .photo-item
+            include(get_template_directory() . '/template-parts/load.php');
+        }
+    } else {
+        echo '<p>Aucune photo ne correspond à vos critères de filtrage.</p>';
+    }
+    
+    wp_reset_postdata();
+    wp_die(); // Termine le processus AJAX
+}
+
+
+/////////////////////////////////////////////////////////
+///////////// Select2 et AJAX pour le filtrage //////////
+add_action('wp_ajax_filtrer_photos', 'filtrer_photos_ajax');
+add_action('wp_ajax_nopriv_filtrer_photos', 'filtrer_photos_ajax');
+
+
+function enqueue_select2() {
+    // Enregistrement de Select2 CSS
+    wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), '4.1.0');
+    
+    // Enregistrement de Select2 JS
+    wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), '4.1.0', true);
+    
+    // Enregistrement de votre script ajax-filter.js
+    wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/assets/js/ajax-filter.js', array('jquery', 'select2-js'), '1.0', true);
+    
+    // Localisation pour ajax-filter.js
+    wp_localize_script('ajax-filter', 'ajax_filter_obj', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('ajax_filter_nonce')
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_select2');
+
+
