@@ -42,13 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
 jQuery(document).ready(function ($) {
     let currentIndex = 0; 
     let targetUrl = photoData.photo_ids[currentIndex];
+    let savedIndex = currentIndex; // Variable pour sauvegarder l'index actuel
 
     // Fonction qui met à jour la miniature affichée
-    function updateThumbnail() {
-        // Récupère l'URL de la miniature correspondant à l'index actuel
-        var thumbnailUrl = photoData.thumbnails[currentIndex];
+    function updateThumbnail(index) {
+        // Récupère l'URL de la miniature correspondant à l'index fourni
+        var thumbnailUrl = photoData.thumbnails[index];
         // Met à jour l'URL cible pour le clic
-        targetUrl = photoData.photo_ids[currentIndex];
+        targetUrl = photoData.photo_ids[index];
         // Change l'image de fond de l'élément #miniaturePhoto
         $("#miniaturePhoto").css("background-image", "url('" + thumbnailUrl + "')");
         // Met à jour l'attribut href de l'élément
@@ -56,20 +57,46 @@ jQuery(document).ready(function ($) {
     }
 
     // Appel initial pour afficher la première miniature
-    updateThumbnail();
+    updateThumbnail(currentIndex);
 
-    // Gestion du clic sur la flèche gauche
-    $(".arrow-left").on("click", function () {
+    // Gestion du survol sur la flèche gauche
+    $(".arrow-left").on("mouseenter", function () {
+        // Sauvegarde l'index actuel avant de changer
+        savedIndex = currentIndex;
+        // Calcule l'index précédent pour le survol
+        let hoverIndex = (currentIndex - 1 + photoData.thumbnails.length) % photoData.thumbnails.length;
+        // Met à jour temporairement l'affichage pendant le survol
+        updateThumbnail(hoverIndex);
+    }).on("mouseleave", function () {
+        // Restaure l'affichage de la miniature originale quand on quitte le survol
+        updateThumbnail(savedIndex);
+    }).on("click", function () {
+        // Met à jour l'index actuel lors du clic
         currentIndex = (currentIndex - 1 + photoData.thumbnails.length) % photoData.thumbnails.length;
-        // Met à jour l'affichage
-        updateThumbnail();
+        // Met à jour l'index sauvegardé également
+        savedIndex = currentIndex;
+        // Met à jour l'affichage définitivement
+        updateThumbnail(currentIndex);
     });
 
-    // Gestion du clic sur la flèche droite
-    $(".arrow-right").on("click", function () {
+    // Gestion du survol sur la flèche droite
+    $(".arrow-right").on("mouseenter", function () {
+        // Sauvegarde l'index actuel avant de changer
+        savedIndex = currentIndex;
+        // Calcule l'index suivant pour le survol
+        let hoverIndex = (currentIndex + 1) % photoData.thumbnails.length;
+        // Met à jour temporairement l'affichage pendant le survol
+        updateThumbnail(hoverIndex);
+    }).on("mouseleave", function () {
+        // Restaure l'affichage de la miniature originale quand on quitte le survol
+        updateThumbnail(savedIndex);
+    }).on("click", function () {
+        // Met à jour l'index actuel lors du clic
         currentIndex = (currentIndex + 1) % photoData.thumbnails.length;
-        // Met à jour l'affichage
-        updateThumbnail();
+        // Met à jour l'index sauvegardé également
+        savedIndex = currentIndex;
+        // Met à jour l'affichage définitivement
+        updateThumbnail(currentIndex);
     });
 
     // Gestion du clic sur la miniature
