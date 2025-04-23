@@ -16,11 +16,9 @@
 </section>
 
 <!-- Catalogue Photos -->
-<section id="catalogueContainer"> 
-    <div id="photo-display"> 
-        <?php afficher_photos_catalogue(); ?> 
-    </div>
-    <button id="btnLoad-more">Charger Plus</button>
+<section class="catalogueContainer"> 
+    <?php afficher_photos_catalogue(); ?> 
+    <button class="btnLoad-more">Charger Plus</button>
 </section>
 
 

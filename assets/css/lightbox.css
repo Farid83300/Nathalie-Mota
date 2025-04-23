@@ -1,0 +1,135 @@
+/********** LIGHTBOX **********/
+.eye {
+    width: 46px;
+    height: 31.2px;    
+    position: absolute;
+    top: 45%;
+    left: 47.5%;
+    cursor: pointer;
+}
+  
+.photo-overlay h2, .photo-overlay h3 {
+    position: absolute;
+    color: #fff;
+    font-family: 'poppons', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.87em;
+    font-weight: 500;
+}
+  
+.photo-overlay h2 {
+    left: 17px;
+    bottom: 12px;
+    font-style: normal;
+}
+  
+.photo-overlay h3 {
+    right: 23px;
+    bottom: 12px;
+}
+  
+.full-screen {
+    position: absolute;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    top: 5%;
+    right: 5%;
+}
+  
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.3s ease;
+    display: none;
+}
+  
+.photo-item:hover .photo-overlay {
+    display: flex;
+    pointer-events: auto;
+    opacity: 1;
+}
+  
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 1000; 
+    justify-content: center;
+    align-items: center;
+}
+  
+.lightbox-content {
+    margin-top: 40px;
+    position: relative;
+    justify-content: center;
+}
+  
+.lightbox-photo img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+}
+  
+.closeLightbox {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    filter: invert(1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+  
+.closeLightbox:hover {
+    transform: scale(1.5); 
+}
+
+.lightbox-navigation {
+    position: absolute;
+    top: 50%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    transform: translateY(-50%);
+}
+
+.lightboxPrevious {
+    margin-left: 170px;
+}
+  
+.lightboxPrevious, .lightboxNext {
+    cursor: pointer;
+}
+  
+.lightboxPrevious img, .lightboxNext img {
+    max-width: 150px;
+    max-height: 150px;
+}
+  
+.lightboxPrevious:hover img, .lightboxNext:hover img {
+    opacity: 0.7;
+}
+  
+.lightbox-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-top: 20px;
+}
+  
+.lightbox-info__reference, .lightbox-info__category {
+    margin-bottom: 10px;
+    font-size: 16px;
+}

@@ -6,6 +6,8 @@ function charger_styles_theme() {
     wp_enqueue_style('style-theme', get_template_directory_uri() . '/assets/css/front-page.css', array(), '1.0');
     wp_enqueue_style('style-modale', get_template_directory_uri() . '/assets/css/modale.css', array(), '1.0');
     wp_enqueue_style('style-single-photo', get_template_directory_uri() . '/assets/css/single-photo.css', array(), '1.0');
+    wp_enqueue_style('style-lightbox', get_template_directory_uri() . '/assets/css/lightbox.css', array(), '1.0');
+    wp_enqueue_style('style-filtres', get_template_directory_uri() . '/assets/css/filtres.css', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'charger_styles_theme');
 
@@ -20,6 +22,9 @@ function enqueue_custom_scripts() {
     
     // Enregistre le script load-more.js
     wp_enqueue_script('load-more', get_template_directory_uri() . '/assets/js/load-more.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue le script de la lightbox
+    wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), null, true);
     
     // Localise le script load-more.js avec les données nécessaires
     wp_localize_script('load-more', 'motaphoto_ajax', array(

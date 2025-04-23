@@ -1,4 +1,10 @@
-
+<?php
+/**
+ * Template part pour du filtre Overlay sur chaque photos
+ *
+ * @package motaphoto
+ */
+?>
 
 <div class="photo-item" data-photo-id="<?php the_ID(); ?>"> <!-- ID de la photo -->
     <a href="<?php the_permalink(); ?>" class="open-single-photo"> <!-- Lien vers la page single-photo -->

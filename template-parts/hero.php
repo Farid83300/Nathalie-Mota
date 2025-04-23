@@ -1,3 +1,10 @@
+<?php
+/**
+ * Template part du Hero
+ *
+ * @package motaphoto
+ */
+?>
 
 <section>
     <div class="hero">

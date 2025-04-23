@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variables pour suivre la pagination
     let currentPage = 1;
     let isLoading = false;
-    const loadMoreBtn = document.getElementById('btnLoad-more');
-    const photoContainer = document.querySelector('#photo-display .photo-display');
+    const loadMoreBtn = document.querySelector('.btnLoad-more');
+    const photoContainer = document.querySelector('.photo-display');
 
     // Gére le clic sur le bouton "Charger Plus"
     if (loadMoreBtn) {
