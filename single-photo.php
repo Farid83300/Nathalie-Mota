@@ -71,7 +71,6 @@
             </p>  
             <p class="txt-infos">Type : <?php echo $type; ?></p>
             <p class="txt-infos">Année : <?php echo get_the_date('Y'); ?></p>
-
         </div>
     </div>
     <!-- Bloc contact -->

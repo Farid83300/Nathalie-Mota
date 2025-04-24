@@ -1,37 +1,39 @@
-///////////////////////////////////////////
-///////////// JS de la Modale /////////////
-document.addEventListener('DOMContentLoaded', function() {
+////////////////////////////////////////////////
+///////////// jQuery de la Modale /////////////
+jQuery(document).ready(function($) {
     // Sélecteurs pour les éléments de contact et la modale
-    const contactLinks = document.querySelectorAll('.menu-header a[href*="contact"], a[href="#contact"]');
-    const refBtn = document.getElementById('ref-btn');
-    const modal = document.getElementById('contactModal');
+    const contactLinks = $('.menu-header a[href*="contact"], a[href="#contact"]');
+    const refBtn = $('#ref-btn');
+    const modal = $('#contactModal');
     
     // Liens de contact standard - juste ouvrir la modale
-    contactLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
+    contactLinks.each(function() {
+        $(this).on('click', function(e) {
             e.preventDefault();
-            modal.style.display = 'block';
+            modal.css('display', 'block');
         });
     });
+    
     // Ouverture Modale avec ajout Référence Photo en cliquant sur le Bouton Contact
-    if (refBtn) {
-        refBtn.addEventListener('click', function(e) {
+    if (refBtn.length) {
+        refBtn.on('click', function(e) {
             e.preventDefault();
-            modal.style.display = 'block';
+            modal.css('display', 'block');
             // Récupérer la référence depuis l'attribut data-ref du bouton
-            const photoRef = this.getAttribute('data-ref');
+            const photoRef = $(this).attr('data-ref');
             setTimeout(function() {
-                const refPhotoField = document.getElementById('ref-photo');
-                if (refPhotoField && photoRef) {
-                    refPhotoField.value = photoRef;
+                const refPhotoField = $('#ref-photo');
+                if (refPhotoField.length && photoRef) {
+                    refPhotoField.val(photoRef);
                 }
             }, 300);
         });
     }
+    
     // Fermer la modale en cliquant à l'extérieur
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
+    $(window).on('click', function(event) {
+        if (event.target == modal[0]) {
+            modal.css('display', 'none');
         }
     });
 });

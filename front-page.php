@@ -11,8 +11,9 @@
 <!-- Appel du Hero -->
 <?php get_template_part('/template-parts/hero'); ?>    
 
+<!-- template des filtres -->
 <section class="filtres_container">
-    <?php get_template_part('template-parts/filtres'); ?>   <!-- template des filtres -->
+    <?php get_template_part('template-parts/filtres'); ?>   
 </section>
 
 <!-- Catalogue Photos -->

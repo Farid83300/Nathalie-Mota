@@ -1,4 +1,4 @@
-
+////////////////////////////////////////////////////////////////////////////////////
 ///////////// Script AJAX de chargement pour le bouton "Charger Plus" /////////////
 document.addEventListener('DOMContentLoaded', function() {
     // Variables pour suivre la pagination

@@ -93,15 +93,15 @@ add_action('wp_enqueue_scripts', 'enqueue_photo_navigation_script');
 function afficher_photos_catalogue($args = array()) {
     // Définie les arguments de la requête
     $default_args = array(
-        'post_type' => 'photo',   // CPT 'photo'
-        'posts_per_page' => 8,   // Nombre de photos par page
+        'post_type' => 'photo',   
+        'posts_per_page' => 8,   
     );
-    $args = array_merge($default_args, $args);  // Fusionne les arguments si des filtres sont passés
+    $args = array_merge($default_args, $args);
 
     // Requête WP_Query pour récupérer les photos
     $photo_query = new WP_Query($args);
     if ($photo_query->have_posts()) :
-        echo '<div class="photo-display">';  // Utiliser 'photo-display' ici pour la cohérence
+        echo '<div class="photo-display">';
         while ($photo_query->have_posts()) : $photo_query->the_post();
             // Inclus le fichier load.php pour l'afficher chaque photo
             include(get_template_directory() . '/template-parts/load.php'); 

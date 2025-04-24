@@ -1,16 +1,9 @@
-/**
- * Script de lightbox en JavaScript Vanilla
- * Ce script gère l'affichage des images en plein écran avec navigation
- */
+/////////////////////////////////////////////////////////////////
+/////////////// Script de lightbox en JavaScript ///////////////
 document.addEventListener('DOMContentLoaded', function() {
     // Récupérer et masquer la lightbox au chargement de la page
     const lightboxOverlay = document.getElementById('lightbox-overlay');
     lightboxOverlay.style.display = 'none';
-
-    /**
-     * Active la lightbox pour toutes les images avec la classe .full-screen
-     * Cette fonction peut être appelée plusieurs fois (après chargement AJAX)
-     */
     function activateLightbox() {
         // Récupérer tous les boutons plein écran de la page
         const fullScreenButtons = document.querySelectorAll('.full-screen');
