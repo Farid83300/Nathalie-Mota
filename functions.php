@@ -2,12 +2,14 @@
 /////////////////////////////////////////////////
 ///////////// Enregistrement du CSS /////////////
 function charger_styles_theme() {
+    wp_enqueue_style('style-reset', get_template_directory_uri() . '/assets/css/reset.css', array(), '1.0', 'all');
     wp_enqueue_style('style-principal', get_stylesheet_uri(), array(), '1.0');
     wp_enqueue_style('style-theme', get_template_directory_uri() . '/assets/css/front-page.css', array(), '1.0');
     wp_enqueue_style('style-modale', get_template_directory_uri() . '/assets/css/modale.css', array(), '1.0');
     wp_enqueue_style('style-single-photo', get_template_directory_uri() . '/assets/css/single-photo.css', array(), '1.0');
     wp_enqueue_style('style-lightbox', get_template_directory_uri() . '/assets/css/lightbox.css', array(), '1.0');
     wp_enqueue_style('style-filtres', get_template_directory_uri() . '/assets/css/filtres.css', array(), '1.0');
+    wp_enqueue_style('style-burger-menu', get_template_directory_uri() . '/assets/css/burger-menu.css', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'charger_styles_theme');
 
@@ -234,6 +236,10 @@ function enqueue_select2() {
     
     // Enregistrement de votre script ajax-filter.js
     wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/assets/js/ajax-filter.js', array('jquery', 'select2-js'), '1.0', true);
+
+    // Enregistrement du Menu Burger
+    wp_enqueue_script('burger-menu', get_template_directory_uri() . '/assets/js/burger-menu.js', array('jquery'), '1.0.0', true);
+
     
     // Localisation pour ajax-filter.js
     wp_localize_script('ajax-filter', 'ajax_filter_obj', array(

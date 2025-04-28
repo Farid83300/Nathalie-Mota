@@ -38,4 +38,9 @@
 				))
 			?>
 		</nav><!-- #site-navigation -->
+		<div class="burger-menu" id="burger-menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
 	</header><!-- #masthead -->

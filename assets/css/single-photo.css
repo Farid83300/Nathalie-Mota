@@ -266,3 +266,96 @@
     pointer-events: auto; /* Permet d'interagir avec l'overlay pendant le survol */
     opacity: 1; /* Assure que l'overlay est visible */
 }
+
+
+/*///////// Media queries /////////*/
+/* Smartphones */
+@media (max-width: 767px) {
+    .page-photo {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .photo-content {
+        flex-direction: column;
+        margin-right: 30px;
+        margin-left: 30px;
+        height: auto;
+    }
+  
+    .bloc-photo img {
+        width: 100%;
+        height: auto; /* Ajuste la hauteur automatiquement */
+    }
+
+    .title-infos {
+        width: 70%;
+        font-size: 1.5em;
+        line-height: 1.2em;
+    }
+  
+    .infos-bloc {
+        width: 100%;
+        margin-top: 20px;
+        margin-right: 0;
+        height: auto;
+    }
+  
+    .txt-infos {
+        width: 100%;
+    }
+  
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        width: 330px;
+        height: auto; /* Ajuste la hauteur automatiquement */
+    }
+  
+    .contact-ref {
+        margin-left: 0;
+        flex-direction: column;
+    }
+  
+    .interesse {
+        margin-right: 0;
+        margin-top: 30px;
+    }
+  
+    #ref-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    #page > section > div.contact-content > div.navigationPhoto {
+        display: none;
+    }
+
+    .related-photos {
+        width: 90%;
+        padding-bottom: 30px;
+        padding-top: 0px;
+    }
+
+    #page > section > div.related-photos > h3 {
+        margin-left: 70px;
+        margin-bottom: 0px
+    }
+
+    #page > section > div.related-photos > div {
+        margin-top: -20px
+    }
+
+    #main {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .photo-item:hover .photo-overlay {
+        display: flex;
+        pointer-events: auto; /* Permet d'interagir avec l'overlay pendant le survol */
+        opacity: 1; /* Assure que l'overlay est visible */
+    }
+    
+}

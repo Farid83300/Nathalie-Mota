@@ -1,0 +1,71 @@
+/* CSS de réinitialisation pour résoudre le problème de marge */
+
+/* 1. Reset complet pour l'élément html et body */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    box-sizing: border-box;
+}
+
+/* 2. Pour le conteneur #page qui englobe tout */
+#page, .site {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* 3. Correction pour les conteneurs principaux */
+@media (max-width: 767px) {
+    body, 
+    #page, 
+    .site, 
+    .site-header, 
+    .hero, 
+    .filtres_container, 
+    .catalogueContainer, 
+    .photo-display, 
+    .site-footer {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Ajuster les paddings intérieurs pour l'espacement au lieu des marges */
+    .photo-display {
+        padding: 0 10px !important;
+    }
+    
+    .catalogueContainer {
+        padding: 0 10px !important;
+    }
+    
+    /* Forcer des dimensions sur les éléments de filtre */
+    .filtre-gauche, 
+    .filtre-droite {
+        width: 95% !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Correction pour Select2 */
+    .select2-container {
+        width: 100% !important;
+    }
+}
+
+/* 4. Vérification pour les éléments qui pourraient déborder */
+img, video, iframe, object {
+    max-width: 100%;
+    height: auto;
+}

@@ -65,20 +65,3 @@ Text Domain: motaphoto
     font-style: normal;
     font-display: swap;
 }
-
-
-/*///////// Media queries /////////*/
-/* Smartphones */
-@media (max-width: 767px) {
-
-}
-
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-
-}
-
-/* Ordinateurs portables */
-@media (min-width: 1024px) {
-
-}
