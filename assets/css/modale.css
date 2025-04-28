@@ -103,7 +103,7 @@ textarea.form-control {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: -30px; /* Remonté de 20px supplémentaires (-5px - 20px = -25px) */
+    margin-top: -30px;
 }
 
 .btn-submit {
@@ -204,4 +204,31 @@ textarea.form-control {
 
 #message + .wpcf7-not-valid-tip {
     bottom: -10px !important; /* Remonté de 2px par rapport à la valeur par défaut (-3px) */
+}
+
+
+/*///////// Media queries /////////*/
+/* Smartphones */
+@media (max-width: 767px) {
+    .modal-content {
+        width: 90%;
+        height: auto;
+        max-height: 90%;
+        margin: 0 auto;
+        padding: 0;
+        margin-top: 40px;
+    }
+
+    .modal-header {
+        height: auto;
+    }
+
+    .modal-body {
+        padding: 0;
+        height: auto;
+    }
+
+    .contact-form-container {
+        width: 100%;
+    }
 }

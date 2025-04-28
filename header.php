@@ -37,10 +37,10 @@
 					'menu_class' => 'menu-header',
 				))
 			?>
-		</nav><!-- #site-navigation -->
+		</nav>
 		<div class="burger-menu" id="burger-menu">
             <span class="line"></span>
             <span class="line"></span>
             <span class="line"></span>
         </div>
-	</header><!-- #masthead -->
+	</header>

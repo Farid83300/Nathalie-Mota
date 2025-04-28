@@ -357,5 +357,87 @@
         pointer-events: auto; /* Permet d'interagir avec l'overlay pendant le survol */
         opacity: 1; /* Assure que l'overlay est visible */
     }
+}
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .page-photo {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .photo-content {
+        flex-direction: column;
+        margin-right: 30px;
+        margin-left: 30px;
+        height: auto;
+    }
+  
+    .bloc-photo img {
+        width: 100%;
+        height: auto; /* Ajuste la hauteur automatiquement */
+    }
+
+    .title-infos {
+        width: 70%;
+        font-size: 1.5em;
+        line-height: 1.2em;
+    }
+  
+    .infos-bloc {
+        width: 100%;
+        margin-top: 20px;
+        margin-right: 0;
+        height: auto;
+    }
+  
+    .txt-infos {
+        width: 100%;
+    }
+  
+    .contact-content {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        width: 93%;
+        height: 120px;
+        margin: auto;
+        border-bottom: 1px solid black;
+    }
+      
+    .contact-ref {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+    }
+      
+    .interesse {
+        margin-right: 60px;
+        font-family: "Poppins";
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
     
+    }
+      
+    #ref-btn {
+        width: 272px;
+        height: 50px;
+        margin-left: 20px;
+        border-radius: 2px;
+        background: #D8D8D8;
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+        border: transparent;
+        font-family: 'Space Mono', sans-serif;
+        font-size: 0.75em;
+        color: #000;
+        transition: all 0.9s ease;
+    
+    }
+
+    .navigationPhoto {
+        margin-top: 10px;
+    }
 }

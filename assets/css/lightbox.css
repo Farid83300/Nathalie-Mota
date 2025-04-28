@@ -133,3 +133,103 @@
     margin-bottom: 10px;
     font-size: 16px;
 }
+
+
+/*///////// Media queries /////////*/
+/* Smartphones */
+@media (max-width: 767px) {
+    .eye {
+        width: 30px;
+        height: 20px;    
+    }
+  
+    .photo-overlay h2, .photo-overlay h3 {
+        font-size: 0.7em;
+    }
+  
+    .full-screen {
+        width: 25px;
+        height: 25px;
+    }
+
+    .lightbox-overlay {
+        height: 100%;
+    }
+  
+    .lightbox-info__reference, .lightbox-info__category {
+        font-size: 14px;
+    }
+
+    .lightbox-navigation {
+        position: absolute;
+        top: 4px;
+        right: 150px;
+        width: 90%;
+        gap: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lightbox-photo img {
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+        object-fit: contain;
+    }
+
+    .closeLightbox {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        filter: invert(1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .eye {
+        width: 30px;
+        height: 20px;    
+    }
+  
+    .photo-overlay h2, .photo-overlay h3 {
+        font-size: 0.7em;
+    }
+  
+    .full-screen {
+        width: 25px;
+        height: 25px;
+    }
+
+    .lightbox-overlay {
+        height: 100%;
+    }
+  
+    .lightbox-info__reference, .lightbox-info__category {
+        font-size: 14px;
+    }
+
+    .lightbox-navigation {
+        position: absolute;
+        top: 4px;
+        right: 150px;
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lightbox-photo img {
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+        object-fit: contain;
+    }
+
+    .closeLightbox {
+        position: absolute;
+        top: -10px;
+        right: 30px;
+    }
+}

@@ -1,6 +1,14 @@
 /* CSS pour le menu burger */
 
 /* Style de base du burger menu */
+#page {
+    position: relative;
+}
+
+#site-navigation.active {
+    z-index: 1000; /* Supérieur au header mais inférieur au burger */
+}
+
 .burger-menu {
     display: none;
     cursor: pointer;
