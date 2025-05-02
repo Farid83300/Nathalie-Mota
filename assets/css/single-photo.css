@@ -19,7 +19,7 @@
 .bloc-photo img {  /*taille selon maquette */
     width: 563px;
     height: 844px;
-    object-fit: cover;
+    object-fit: contain;
 }
   
 .txt-infos {

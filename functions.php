@@ -161,7 +161,6 @@ function filtrer_photos_ajax() {
     
     // Récupération des filtres
     $filters = isset($_POST['filters']) ? $_POST['filters'] : array();
-    $photo_ids = isset($_POST['photoArray']) ? $_POST['photoArray'] : array();
     
     // Arguments de base pour la requête
     $args = array(
@@ -169,9 +168,12 @@ function filtrer_photos_ajax() {
         'posts_per_page' => 8,
     );
     
-    // Exclut les photos déjà affichées si nécessaire
-    if (!empty($photo_ids)) {
-        $args['post__not_in'] = $photo_ids;
+    // Traitement du tri spécial en premier (à l'extérieur de la boucle des taxonomies)
+    if (isset($filters['sort'])) {
+        $args['orderby'] = 'date';
+        $args['order'] = $filters['sort']; // ASC ou DESC
+        // Supprime sort du tableau des filtres pour qu'il ne soit pas traité comme taxonomie
+        unset($filters['sort']);
     }
     
     // Ajout des taxonomies au tableau tax_query si des filtres sont appliqués
@@ -179,13 +181,6 @@ function filtrer_photos_ajax() {
         $tax_query = array('relation' => 'AND');
         
         foreach ($filters as $taxonomy => $term) {
-            // Gestion du tri spécial
-            if ($taxonomy === 'sort') {
-                $args['orderby'] = 'date';
-                $args['order'] = $term; // ASC ou DESC
-                continue;
-            }
-            
             // N'ajoute que les taxonomies valides
             if ($taxonomy === 'categorie' || $taxonomy === 'format') {
                 $tax_query[] = array(
