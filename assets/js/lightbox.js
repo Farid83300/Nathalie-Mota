@@ -4,44 +4,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // Récupérer et masquer la lightbox au chargement de la page
     const lightboxOverlay = document.getElementById('lightbox-overlay');
     lightboxOverlay.style.display = 'none';
+    
+    // Fonction pour attacher les écouteurs d'événements aux boutons plein écran
     function activateLightbox() {
         // Récupérer tous les boutons plein écran de la page
         const fullScreenButtons = document.querySelectorAll('.full-screen');
         
-        // Attacher un écouteur d'événement à chaque bouton plein écran
+        // Détacher d'abord les écouteurs existants pour éviter les doublons
         fullScreenButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault(); // Empêcher le comportement par défaut du lien
-                
-                // Récupérer les attributs data- contenant les informations de l'image
-                const imageSrc = this.getAttribute('data-image');
-                const reference = this.getAttribute('data-reference');
-                const category = this.getAttribute('data-category');
-
-                // Mettre à jour le contenu de la lightbox avec les informations de l'image
-                document.getElementById('lightbox-image').setAttribute('src', imageSrc);
-                document.getElementById('photo-reference').textContent = 'Référence : ' + reference;
-                document.getElementById('photo-category').textContent = 'Catégorie : ' + category;
-                
-                // Déterminer l'index actuel de l'image pour la navigation
-                const photoItems = document.querySelectorAll('.photo-item');
-                photoItems.forEach((item, index) => {
-                    if (item.contains(this)) {
-                        currentIndex = index; // Mise à jour de l'index global
-                    }
-                });
-
-                // Afficher la lightbox avec une animation fade in
-                lightboxOverlay.style.display = 'block';
-                setTimeout(() => {
-                    lightboxOverlay.style.opacity = '1';
-                }, 10); // Petit délai pour permettre au navigateur d'appliquer le display avant l'opacité
-            });
+            button.removeEventListener('click', handleFullScreenClick);
+            button.addEventListener('click', handleFullScreenClick);
         });
+    }
+    
+    // Gestionnaire d'événement pour le clic sur les boutons plein écran
+    function handleFullScreenClick(e) {
+        e.preventDefault(); // Empêcher le comportement par défaut du lien
+        
+        // Récupérer les attributs data- contenant les informations de l'image
+        const imageSrc = this.getAttribute('data-image');
+        const reference = this.getAttribute('data-reference');
+        const category = this.getAttribute('data-category');
+
+        // Mettre à jour le contenu de la lightbox avec les informations de l'image
+        document.getElementById('lightbox-image').setAttribute('src', imageSrc);
+        document.getElementById('photo-reference').textContent = 'Référence : ' + reference;
+        document.getElementById('photo-category').textContent = 'Catégorie : ' + category;
+        
+        // Déterminer l'index actuel de l'image pour la navigation
+        const photoItems = document.querySelectorAll('.photo-item');
+        photoItems.forEach((item, index) => {
+            if (item.contains(this)) {
+                currentIndex = index; // Mise à jour de l'index global
+            }
+        });
+
+        // Afficher la lightbox avec une animation fade in
+        lightboxOverlay.style.display = 'block';
+        setTimeout(() => {
+            lightboxOverlay.style.opacity = '1';
+        }, 10); // Petit délai pour permettre au navigateur d'appliquer le display avant l'opacité
     }
 
     // Initialiser la lightbox pour les éléments existants au chargement de la page
     activateLightbox();
+
+    // Utiliser la délégation d'événements pour gérer les clics sur .full-screen
+    // Cette approche fonctionne même avec des éléments ajoutés dynamiquement
+    document.addEventListener('click', function(e) {
+        // Vérifier si l'élément cliqué ou un de ses parents est un .full-screen
+        let target = e.target;
+        while (target && target !== document) {
+            if (target.classList.contains('full-screen')) {
+                e.preventDefault();
+                handleFullScreenClick.call(target, e);
+                return;
+            }
+            target = target.parentNode;
+        }
+    });
 
     /**
      * Écouteur pour fermer la lightbox lors du clic sur la croix
@@ -105,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /**
      * Configuration du MutationObserver pour détecter les nouvelles photos chargées via AJAX
      */
-    const photoContainer = document.querySelector('.photos-container'); // À ajuster selon votre structure HTML
+    const photoContainer = document.querySelector('.photo-display') || document.querySelector('.photos-container');
     if (photoContainer) {
         // Créer un observateur qui va surveiller les modifications du DOM
         const observer = new MutationObserver(function(mutations) {
